@@ -17,4 +17,4 @@
 - На втором этапе посетитель переходит по гиперссылке, полученной в письме, попадает на страницу активации и
  становится полноправным пользователем.
 
-Стек технологий: Python 3.8/ Django 3.2./ Django Rest Framework/ Django-bootstrap4/ Templates/
+Стек технологий: Python 3.8/ Django 3.2./ Django Rest Framework/ PostgreSQL/ Django-bootstrap4/ DjangoTemplates/
