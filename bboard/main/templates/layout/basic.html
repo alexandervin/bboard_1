@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html lang="ru">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -11,17 +10,16 @@
 
         <title> {% block title %} Главная {% endblock title %} - Доска объявлений </title>
         {% bootstrap_css %}
-        <link rel="stylesheet" type="text/css" href="{% static style.css %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
         {% bootstrap_javascript jquery='slim' %}
     </head>
-
     <body class="container-fluid">
         <headr class="mb-4">
             <h1 class="display-3 text-center">Доска объявлений</h1>
         </headr>
 
         <div class="row">
-            <ul class="col nav nav justify-content-end border">
+            <ul class="col nav justify-content-end border">
                 <li class="nav-item">
                     <a class="nav-link"
                     href="#">Регистрация</a></li>
@@ -31,7 +29,7 @@
                        aria-expanded="false">Профиль</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Мои объявления</a>
-                        <a class="dropdown-item" href="#">Изменить личные данные</a>
+                        <a class="dropdown-item" href="#">Изменить данные</a>
                         <a class="dropdown-item" href="#">Изменить пароль</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Выйти</a>
@@ -53,6 +51,7 @@
             <span class="nav-link root font-weight-bold">Транспорт</span>
             <a class="nav-link" href="#">Легковой</a>
             <a class="nav-link" href="#">Грузовой</a>
+            <a class="nav-link root" href="{% url 'main:other' page='about' %}">О сайте</a>
             </nav>
 
         <section class="col border py-2">
@@ -63,7 +62,7 @@
 
         </div>
         <footer class="mt-3">
-            <p class="text-center font-italic">&copy@AlexanderVinitsky</p>
+            <p class="text-center font-italic">&copy_AlexanderVinitsky_</p>
 
         </footer>
 
