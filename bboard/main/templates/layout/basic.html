@@ -4,51 +4,69 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=0,">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=0,">
 
-    <title> {% block title %} Главная {% endblock title %} - Доска объявлений </title>
-    {% bootstrap_css %}
-    <link rel="stylesheet" type="text/css" href="{% static style.css %}">
-    {% bootstrap_javascript jquery='slim' %}
-</head>
+        <title> {% block title %} Главная {% endblock title %} - Доска объявлений </title>
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static style.css %}">
+        {% bootstrap_javascript jquery='slim' %}
+    </head>
 
-<body class="container-fluid">
-    <headr class="mb-4">
-        <h1 class="display-3 text-center">Доска объявлений</h1>
-    </headr>
+    <body class="container-fluid">
+        <headr class="mb-4">
+            <h1 class="display-3 text-center">Доска объявлений</h1>
+        </headr>
 
-    <div class="row">
-        <ul class="col nav nav justify-content-end border">
-            <li class="nav-item">
-                <a class="nav-link"
-                href="#">Регистрация</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown"
-                href="#" role="button" aria-haspopup="true"
-                   aria-expanded="false">Профиль</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Мои объявления</a>
-                    <a class="dropdown-item" href="#">Изменить личные данные</a>
-                    <a class="dropdown-item" href="#">Изменить пароль</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Выйти</a>
-                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Удалить</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Вход</a></li>
-        </ul>
+        <div class="row">
+            <ul class="col nav nav justify-content-end border">
+                <li class="nav-item">
+                    <a class="nav-link"
+                    href="#">Регистрация</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="true"
+                       aria-expanded="false">Профиль</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Мои объявления</a>
+                        <a class="dropdown-item" href="#">Изменить личные данные</a>
+                        <a class="dropdown-item" href="#">Изменить пароль</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Выйти</a>
+                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Удалить</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Вход</a></li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="row">
+            <nav class="col-md-auto nav flex-column border">
+            <a class="nav-link root" href="{% url 'main:index' %}">Главная</a>
+            <span class="nav-link root font-weight-bold">Heдвижимость</span>
+            <a class="nav-link" href="#">Склады</a>
+            <a class="nav-link" href="#">Гаражи</a>
+            <span class="nav-link root font-weight-bold">Транспорт</span>
+            <a class="nav-link" href="#">Легковой</a>
+            <a class="nav-link" href="#">Грузовой</a>
+            </nav>
 
-    <section>
-        {% block content %}
-        {% endblock content%}
-    </section>
+        <section class="col border py-2">
+            {% bootstrap_messages %}
+            {% block content %}
+            {% endblock content%}
+        </section>
 
-</body>
+        </div>
+        <footer class="mt-3">
+            <p class="text-center font-italic">&copy@AlexanderVinitsky</p>
+
+        </footer>
+
+
+    </body>
 </html>
