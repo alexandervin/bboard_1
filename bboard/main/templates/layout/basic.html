@@ -19,10 +19,10 @@
         </header>
 
         <div class="row">
-            <ul class="col nav justify-content-end border">
+
+            <ul class="col nav justify-content-center border">
                 <li class="nav-item">
-                    <a class="nav-link"
-                    href="#">Регистрация</a></li>
+                    <a class="nav-link" href="#">Регистрация</a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -33,7 +33,7 @@
                         <a class="dropdown-item" href="#">Изменить данные</a>
                         <a class="dropdown-item" href="#">Изменить пароль</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Выйти</a>
+                        <a class="dropdown-item" href="{% url 'main:logout' %}">Выйти</a>
                          <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Удалить</a>
                     </div>
@@ -47,21 +47,21 @@
 
         <div class="row">
             <nav class="col-md-auto nav flex-column border">
-            <a class="nav-link root" href="{% url 'main:index' %}">Главная</a>
-            <span class="nav-link root font-weight-bold">Heдвижимость</span>
-            <a class="nav-link" href="#">Склады</a>
-            <a class="nav-link" href="#">Гаражи</a>
-            <span class="nav-link root font-weight-bold">Транспорт</span>
-            <a class="nav-link" href="#">Легковой</a>
-            <a class="nav-link" href="#">Грузовой</a>
-            <a class="nav-link root" href="{% url 'main:other' page='about' %}">О сайте</a>
+                <a class="nav-link root" href="{% url 'main:index' %}">Главная</a>
+                <span class="nav-link root font-weight-bold">Heдвижимость</span>
+                <a class="nav-link" href="#">Склады</a>
+                <a class="nav-link" href="#">Гаражи</a>
+                <span class="nav-link root font-weight-bold">Транспорт</span>
+                <a class="nav-link" href="#">Легковой</a>
+                <a class="nav-link" href="#">Грузовой</a>
+                <a class="nav-link root" href="{% url 'main:other' page='about' %}">О сайте</a>
             </nav>
 
-        <section class="col border py-2">
-            {% bootstrap_messages %}
-            {% block content %}
-            {% endblock content%}
-        </section>
+            <section class="col border py-2">
+                {% bootstrap_messages %}
+                {% block content %}
+                {% endblock content%}
+            </section>
 
         </div>
         <footer class="mt-3">
