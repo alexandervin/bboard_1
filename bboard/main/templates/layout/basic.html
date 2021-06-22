@@ -22,7 +22,7 @@
 
             <ul class="col nav justify-content-center border">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Регистрация</a></li>
+                    <a class="nav-link" href="{% url 'main:register' %}">Регистрация</a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -30,7 +30,7 @@
                        aria-expanded="false">Профиль</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'main:profile' %}">Мои объявления</a>
-                        <a class="dropdown-item" href="{% url 'main:profile_chenge' %}">Изменить данные</a>
+                        <a class="dropdown-item" href="{% url 'main:profile_change' %}">Изменить данные</a>
                         <a class="dropdown-item" href="{% url 'main:password_change' %}">Изменить пароль</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'main:logout' %}">Выйти</a>

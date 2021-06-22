@@ -7,10 +7,10 @@ from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, CreateView, TemplateView
 
 from main.models import AdvUser
-from main.forms import ChangeUserInfoForm
+from main.forms import ChangeUserInfoForm, RegisterUserForm
 
 
 def index(request):
@@ -37,7 +37,6 @@ def profile(request):
 class BBLogoutView(LoginRequiredMixin, LogoutView):
     template_name = 'main/logout.html'
 
-
 class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = AdvUser
     template_name = 'main/change_user_info.html'
@@ -61,4 +60,13 @@ class BBPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordChan
     success_message = 'Пароль пользователя изменен'
 
 
+class RegisterUserView(CreateView):
+    model = AdvUser
+    template_name = 'main/register_user.html'
+    form_class = RegisterUserForm
+    success_url = reverse_lazy('main:register_done')
+
+
+class RegisterDoneView(TemplateView):
+    template_name = 'main/register_done.html'
 
