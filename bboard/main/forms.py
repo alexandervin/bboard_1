@@ -21,7 +21,7 @@ class RegisterUserForm(forms.ModelForm):
                                 help_text='Введите еще раз тот же самый пароль для проверки')
 
     def clean_password1(self):
-        password1 = self.changed_data['password1']
+        password1 = self.cleaned_data['password1']
         if password1:
             password_validation.validate_password(password1)
         return password1

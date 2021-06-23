@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.core.signing import BadSignature
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template import TemplateDoesNotExist
@@ -11,6 +12,7 @@ from django.views.generic import UpdateView, CreateView, TemplateView
 
 from main.models import AdvUser
 from main.forms import ChangeUserInfoForm, RegisterUserForm
+from main.utilities import signer
 
 
 def index(request):
@@ -70,3 +72,22 @@ class RegisterUserView(CreateView):
 class RegisterDoneView(TemplateView):
     template_name = 'main/register_done.html'
 
+
+def user_activate(request, sign):
+    """Активация нового пользователя с учетом цифровой подписи"""
+    try:
+        username = signer.unsign(sign)
+    except BadSignature:
+        return render(request, 'main/bad_signature.html')
+    user = get_object_or_404(AdvUser, username=username)
+    if user.is_activated:
+        template = 'main/user_is_activated.html'
+        user = get_object_or_404(AdvUser, username=username)
+        if user.is_activated:
+            template = 'main/user_is_activated.html'
+        else:
+            template = 'main/activation_done.html'
+            user.is_active = True
+            user.is_activated = True
+            user.save()
+        return render(request, template)
