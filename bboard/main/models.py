@@ -69,7 +69,7 @@ class Bb(models.Model):
     image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Изображение')
     author = models.ForeignKey(AdvUser, on_delete=models.CASCADE, verbose_name='Автор объявления')
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
-    created_at = models.DateTimeField(auto_now_add=True, db_index=True,verbose_name='Опубликовано')
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
 
     def delete(self, *args, **kwargs):
         for ai in self.additionalimage_set.all():
@@ -85,21 +85,8 @@ class Bb(models.Model):
 class AdditionalImage(models.Model):
     """Модель дополнительных иллюстраций"""
     bb = models.ForeignKey(Bb, on_delete=models.CASCADE, verbose_name='Объявление')
-    image =models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
 
     class Meta:
         verbose_name_plural = 'Дополнительные иллюстрации'
         verbose_name = 'Дополнительная иллюстрация'
-
-
-
-
-
-
-
-
-
-
-
-
-
