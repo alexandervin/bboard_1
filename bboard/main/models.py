@@ -21,6 +21,7 @@ class SuperRubricManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(super_rubric__isnull=True)
 
+
 class SuperRubric(Rubric):
     objects = SuperRubricManager()
 
@@ -38,6 +39,7 @@ class SubRubricManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(super_rubric__isnull=False)
 
+
 class SubRubric(Rubric):
     objects = SubRubricManager()
 
@@ -49,6 +51,3 @@ class SubRubric(Rubric):
         ordering = ('super_rubric__order', 'super_rubric__name', 'order', 'name')
         verbose_name = 'Подрубрика'
         verbose_name_plural = 'Подрубрики'
-
-
-
