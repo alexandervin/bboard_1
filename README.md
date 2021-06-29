@@ -1,7 +1,7 @@
 # bboard_1
 ***Доска объявлений.***
 
-Стек технологий: Python 3.8/ Django 3.2./ Django Rest Framework/ PostgreSQL/ Django-bootstrap4/ DjangoTemplates/
+* Стек технологий: Python 3.8/ Django 3.2/ Django Rest Framework/ PostgreSQL/ Django-bootstrap4/ DjangoTemplates/
 
 
 Электронная доска объявлений для публикации, зарегестрированными пользователями, объявлений о продаже чего-либо.
