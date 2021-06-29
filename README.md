@@ -19,5 +19,18 @@
 чего на указанный им адрес электронной почты приходит письмо с гиперссылкой, ведущей на страницу активации. 
 - На втором этапе посетитель переходит по гиперссылке, полученной в письме, попадает на страницу активации и
  становится полноправным пользователем.
+ 
+ Code: 
+ - python3 -m venv venv
+ - source .venv/bin/activate
+ - pip install -r req.txt
+ - python3 manage.py makemigrations
+ - python3 manage.py migrate
+ 
+ - Termina№1: python3 manege.py runserver
+ - Terminal№2: python3 -m smtpd -n -c DebuggingServer localhost:1025
+ 
+ localhost:8000 -> user:admin; password:admin 
+ 
 
 Стек технологий: Python 3.8/ Django 3.2./ Django Rest Framework/ PostgreSQL/ Django-bootstrap4/ DjangoTemplates/
