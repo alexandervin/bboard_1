@@ -1,6 +1,9 @@
 # bboard_1
 ***Доска объявлений.***
 
+Стек технологий: Python 3.8/ Django 3.2./ Django Rest Framework/ PostgreSQL/ Django-bootstrap4/ DjangoTemplates/
+
+
 Электронная доска объявлений для публикации, зарегестрированными пользователями, объявлений о продаже чего-либо.
 
 Объявления разносяться по рубрикам, структура рубрик имеет два уровня иерархии:
@@ -33,4 +36,3 @@
  localhost:8000 -> user:admin; password:admin 
  
 
-Стек технологий: Python 3.8/ Django 3.2./ Django Rest Framework/ PostgreSQL/ Django-bootstrap4/ DjangoTemplates/
