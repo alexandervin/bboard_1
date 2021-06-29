@@ -90,3 +90,5 @@ class AdditionalImage(models.Model):
     class Meta:
         verbose_name_plural = 'Дополнительные иллюстрации'
         verbose_name = 'Дополнительная иллюстрация'
+
+
