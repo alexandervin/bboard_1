@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_cleanup',
     'easy_thumbnails',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,11 @@ THUMBNAIL_ALIASES = {
 
 THUMBNAIL_BASEDIR = 'thumbnails'
 
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+}
+
+# GRAPH_MODELS = {
+#   'app_labels': ["myapp1", "myapp2", "auth"],
+# }

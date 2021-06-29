@@ -1,0 +1,7 @@
+
+---Mail---
+
+python -m smtpd -n -c DebuggingServer localhost:1025
+
+-----Graph---
+manage.py graph_models --pydot -a -g -o my_project_visualized.png
