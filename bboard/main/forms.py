@@ -59,3 +59,5 @@ class SubrubricForm(forms.ModelForm):
     class Meta:
         model = SubRubric
         fields = '__all__'
+
+# TODO add form search
