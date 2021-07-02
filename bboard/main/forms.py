@@ -60,4 +60,7 @@ class SubrubricForm(forms.ModelForm):
         model = SubRubric
         fields = '__all__'
 
-# TODO add form search
+
+class SearchForm(forms.Form):
+    keyword = forms.CharField(required=False, max_length=20, label='')
+
