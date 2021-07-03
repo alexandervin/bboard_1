@@ -141,3 +141,8 @@ def by_rubric(request, pk):
     context = {'rubric': rubric, 'page': page, 'bbs': page.object_list, 'form':form}
     return render(request, 'main/by_rubric.html', context)
 
+def detail(request, rubrick_pk, pk):
+    bb = get_object_or_404(Bb, pk=pk)
+    ais = bb.additionalimage_set.all()
+    context = {'bb': bb, 'ais': ais}
+    return (request, 'main/detail.html', context)
