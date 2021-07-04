@@ -121,7 +121,6 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
         return get_object_or_404(queryset, pk=self.user_id)
 
 
-
 def by_rubric(request, pk):
     rubric = get_object_or_404(SubRubric, pk=pk)
     bbs = Bb.objects.filter(is_active=True, rubric=pk)
@@ -131,18 +130,19 @@ def by_rubric(request, pk):
         bbs = bbs.filter(q)
     else:
         keyword = ''
-    form = SearchForm(initial={'keyword':keyword})
+    form = SearchForm(initial={'keyword': keyword})
     paginator = Paginator(bbs, 2)
     if 'page' in request.GET:
         page_num = request.GET['page']
     else:
         page_num = 1
     page = paginator.get_page(page_num)
-    context = {'rubric': rubric, 'page': page, 'bbs': page.object_list, 'form':form}
+    context = {'rubric': rubric, 'page': page, 'bbs': page.object_list, 'form': form}
     return render(request, 'main/by_rubric.html', context)
 
-def detail(request, rubrick_pk, pk):
+
+def detail(request, rubric_pk, pk):
     bb = get_object_or_404(Bb, pk=pk)
     ais = bb.additionalimage_set.all()
     context = {'bb': bb, 'ais': ais}
-    return (request, 'main/detail.html', context)
+    return render(request, 'main/detail.html', context)
