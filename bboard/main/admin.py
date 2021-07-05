@@ -1,19 +1,17 @@
 from django.contrib import admin
-from .models import AdvUser, Rubric, SuperRubric, SuperRubricManager, SubRubricManager, SubRubric, AdditionalImage, Bb
-from .utilities import send_activation_notification
 import datetime
-from .forms import SubrubricForm
 
-from .models import SuperRubricManager, SubRubricManager
-
+from .models import AdvUser, Bb, AdditionalImage, Comment
+from .forms import SubRubricForm
+from .utilities import send_activation_notification
 
 def send_activation_notifications(modeladmin, request, queryset):
     for rec in queryset:
         if not rec.is_activated:
             send_activation_notification(rec)
     modeladmin.message_user(request, 'Письма с требованиями отправлены')
-    send_activation_notification.short_description = 'Отправка писем с требованиями активации'
-
+send_activation_notifications.short_description = \
+'Отправка писем с требованиями активации'
 
 class NonactivatedFilter(admin.SimpleListFilter):
     title = 'Прошли активацию?'
@@ -21,22 +19,23 @@ class NonactivatedFilter(admin.SimpleListFilter):
 
     def lookups(self, request, model_admin):
         return (
-            ('activated', 'Прошли'),
-            ('threedays', 'Не прошли более трех дней'),
-            ('week', 'Не прошли более недели')
-        )
+                   ('activated', 'Прошли'),
+                   ('threedays', 'Не прошли более 3 дней'),
+                   ('week', 'Не прошли более недели'),
+               )
 
     def queryset(self, request, queryset):
         val = self.value()
         if val == 'activated':
             return queryset.filter(is_active=True, is_activated=True)
-        elif val == 'week':
+        elif val == 'threedays':
             d = datetime.date.today() - datetime.timedelta(days=3)
-            return queryset.filter(is_active=False, is_activated=False, date_joined__date__lt=d)
+            return queryset.filter(is_active=False, is_activated=False,
+                                   date_joined__date__lt=d)
         elif val == 'week':
-            d = datetime.date.today() - datetime.timedelta(days=3)
-            return queryset.filter(is_active=False, is_activated=False, date_joined__date__lt=d)
-
+            d = datetime.date.today() - datetime.timedelta(weeks=1)
+            return queryset.filter(is_active=False, is_activated=False,
+                                   date_joined__date__lt=d)
 
 class AdvUserAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'is_activated', 'date_joined')
@@ -50,41 +49,41 @@ class AdvUserAdmin(admin.ModelAdmin):
     readonly_fields = ('last_login', 'date_joined')
     actions = (send_activation_notifications,)
 
-
 admin.site.register(AdvUser, AdvUserAdmin)
 
+from .models import SuperRubric, SubRubric
 
 class SubRubricInline(admin.TabularInline):
     model = SubRubric
-
-
 class SuperRubricAdmin(admin.ModelAdmin):
     exclude = ('super_rubric',)
     inlines = (SubRubricInline,)
 
-
 admin.site.register(SuperRubric, SuperRubricAdmin)
 
-
 class SubRubricAdmin(admin.ModelAdmin):
-    form = SubrubricForm
-
+    form = SubRubricForm
 
 admin.site.register(SubRubric, SubRubricAdmin)
-
 
 class AdditionalImageInline(admin.TabularInline):
     model = AdditionalImage
 
 class BbAdmin(admin.ModelAdmin):
     list_display = ('rubric', 'title', 'content', 'author', 'created_at')
-    fields = (('rubric', 'author'), 'title', 'content', 'price', 'contacts', 'is_active')
+    fields = (('rubric', 'author'), 'title', 'content', 'price',
+              'contacts', 'image', 'is_active')
     inlines = (AdditionalImageInline,)
-
 
 admin.site.register(Bb, BbAdmin)
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'content', 'created_at', 'is_active')
+    list_display_links = ('author', 'content')
+    list_filter = ('is_active',)
+    search_fields = ('author', 'content',)
+    date_hierarchy = 'created_at'
+    fields = ('author', 'content', 'is_active', 'created_at')
+    readonly_fields = ('created_at',)
 
-
-
-
+admin.site.register(Comment, CommentAdmin)

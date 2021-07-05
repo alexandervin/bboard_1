@@ -33,6 +33,6 @@
  - Termina№1: python3 manege.py runserver
  - Terminal№2: python3 -m smtpd -n -c DebuggingServer localhost:1025
  
- localhost:8000 -> user:admin; password:admin 
+ localhost:8000 -> user:admin1; password:admin 
  
 
