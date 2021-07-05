@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'bboard.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'bboard.data',
+        'NAME': BASE_DIR /'bboard.data',
     }
 }
 

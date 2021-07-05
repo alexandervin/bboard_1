@@ -2,7 +2,7 @@ SECRET_KEY.txt
 __pycache__/
 git.txt
 db.sqlite3
-bboard.data
+
 *.pyc
 .idea/
 venv/
