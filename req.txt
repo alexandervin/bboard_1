@@ -17,3 +17,4 @@ django-simple-captcha==0.5.14
 djangorestframework==3.12.4
 six==1.16.0
 
+

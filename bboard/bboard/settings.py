@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api.apps.ApiConfig',
+    'django_extensions',
+
 ]
 
 MIDDLEWARE = [
@@ -148,3 +150,8 @@ THUMBNAIL_BASEDIR = 'thumbnails'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
