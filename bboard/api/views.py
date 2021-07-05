@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from main.models import Bb, Comment
 from .serializers import BbSerializer, BbDetailSerializer, CommentSerializer
 
+
 @api_view(['GET'])
 def bbs(request):
     if request.method == 'GET':
@@ -14,9 +15,11 @@ def bbs(request):
         serializer = BbSerializer(bbs, many=True)
         return Response(serializer.data)
 
+
 class BbDetailView(RetrieveAPIView):
     queryset = Bb.objects.filter(is_active=True)
     serializer_class = BbDetailSerializer
+
 
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
